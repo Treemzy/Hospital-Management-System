@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$1#e%qbbu12=w@+9p9-a9s+vj&j_#7%cf8tp$+qdpqy^cd8t*4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['treemzy-chms.herokuapp.com', '127.0.0.1']
 # ALLOWED_HOSTS = ['*']
@@ -125,11 +125,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 # added manually
 STATICFILES_DIRS = [
     BASE_DIR / "static",
