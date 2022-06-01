@@ -1,0 +1,72 @@
+{% extends "CHospital/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+   <div class="app-title">
+
+       <div>
+              <h1><i class="fa fa-edit"></i> Create Appointment</h1>
+              <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+              <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+              <li class="breadcrumb-item"><a href="{% url 'CHMS-appointment' %}">Records</a></li>
+            </ul>
+       </div>
+
+      <div class="tile">
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-appointment' %}"><i class="fa fa-lg fa-home"></i></a><a class="btn btn-primary" href="javascript:window.history.back();"><i class="fa fa-lg fa-arrow-left"></i></a></div>
+         <div class="page-header">
+          <div class="row">
+            <div class="col-lg-12">
+                {% if h2 %}
+                    <h2 class="mb-3 line-head" >{{ h2 }} Appointment</h2>
+                {% else %}
+                    <h2 class="mb-3 line-head">Create Appointment</h2>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+          <form class="login-form" method="POST" action="">
+            {% csrf_token %}
+            <div class="row">
+                 <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Appointment Type: </label>
+                         {{ form.AppointmentTypeID|as_crispy_field }}
+                      </div>
+                 </div>
+                <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Scheduled Date: </label>
+                         {{ form.scheduledDate|as_crispy_field }}
+                      </div>
+                 </div>
+                 <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Available Doctor: </label>
+                         {{ form.doctor|as_crispy_field }}
+                      </div>
+                 </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Remark: </label>
+                         {{ form.note|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="createDate" value="{% now 'Y-m-d H:i:s' %}" />
+            </div>
+             <div class="form-group btn-container">
+                 {% if h2 %}
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-check-circle fa-lg fa-fw"></i>{{ h2 }} Appointment</button>
+                {% else %}
+                   <button class="btn btn-primary" type="submit"><i class="fa fa-check-circle fa-lg fa-fw"></i>CREATE</button>
+                {% endif %}
+             </div>
+          </form>
+   </div>
+{%endblock content%}

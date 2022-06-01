@@ -1,0 +1,63 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-users"></i> All Users</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-lg-7">
+             <p class="bs-component">
+<!--               <a class="btn btn-primary icon-btn" href="{% url 'CHMS-RoleCreate' %}"><i class="fa fa-plus"></i>Add Gender</a>-->
+             </p>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Role</th>
+                      <th>Admin Status</th>
+                      <th>Super-Admin Status</th>
+                      <th>Date Joined</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for allUsers in object_list %}
+                        <tr>
+                          <td>{{ allUsers.username }}</td>
+                          <td>{{ allUsers.email }}</td>
+                          <td>{{ allUsers.first_name }}</td>
+                          <td>{{ allUsers.last_name }}</td>
+                          <td>{{ allUsers.roles }}</td>
+                          <td>{{ allUsers.is_admin }}</td>
+                          <td>{{ allUsers.is_superadmin }}</td>
+                          <td>{{ allUsers.date_joined}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-secondary" href="{% url 'CHMS-AllUsersUpdate' allUsers.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-info" href="{% url 'CHMS-AllUsersDetail' allUsers.id %}"><i class="fa fa-lg fa-info-circle"></i></a><a class="btn btn-danger" href="{% url 'CHMS-AllUsersDelete' allUsers.id %}"><i class="fa fa-lg fa-trash"></i></a></div>
+
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

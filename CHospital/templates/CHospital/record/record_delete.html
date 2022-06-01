@@ -1,0 +1,43 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+       <div>
+
+          <h1><i class="fa fa-edit"></i> Delete Patient Records</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Records</a></li>
+        </ul>
+
+   </div>
+      <div class="tile">
+          <form class="login-form" method="POST" action="">
+             {% csrf_token %}
+              <div class="page-header">
+                 <div class="row">
+                    <div class="col-lg-12">
+                       <h2 class="mb-3 line-head">Delete Record</h2>
+                    </div>
+                  </div>
+              </div>
+              <h2>Are you sure you want to delete this record?</h2>
+              <div class="card mb-3 text-white bg-primary">
+                <div class="card-body">
+                  <blockquote class="card-blockquote">
+                      <h4>{{ object.surname }} {{ object.firstname }} {{ object.othername }}</h4>
+                      <h4>{{ object.hopitalNo }} </h4>
+                      <h4>{{ object.matric_staff }} </h4>
+                  </blockquote>
+                </div>
+              </div>
+
+              <div class="form-group btn-container">
+                <button class="btn btn-danger" type="submit"><i class="fa fa-check-circle fa-lg fa-fw"></i>DELETE</button>
+                <a class="btn btn-secondary" href="{% url 'CHMS-records'%}"><i class="fa fa-times-circle fa-lg fa-fw"></i>CANCEL</a>
+             </div>
+          </form>
+
+      </div>
+{%endblock content%}

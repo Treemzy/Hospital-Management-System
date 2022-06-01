@@ -1,0 +1,51 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-pills"></i> Drugs Records</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Admin</a></li>
+        </ul>
+   </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Remark</th>
+                      <th>Created By</th>
+                      <th>Date Created</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for drugsRecord in drugsRecord %}
+                        <tr>
+                          <td>{{ drugsRecord.drugs.name}}</td>
+                          <td>{{ drugsRecord.drugs.quantity}}</td>
+                          <td>{{ drugsRecord.drugs.remark}}</td>
+                          <td>{{ drugsRecord.drugs.creator}}</td>
+                          <td>{{ drugsRecord.drugs.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-danger" href="{% url 'CHMS-drugsrecordDelete' drugsRecord.id %}"><i class="fa fa-lg fa-trash"></i></a><a class="btn btn-info" href="{% url 'CHMS-drugsDetail' drugsRecord.id %}"><i class="fa fa-lg fa-info-circle"></i></a></div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

@@ -1,0 +1,59 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Doctor's Note</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-doctorNote' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Patient Name</th>
+                      <th>Hospital Number</th>
+                      <th>Appointment Type</th>
+                      <th class="bg-dark text-white">Status</th>
+                      <th class="bg-dark text-white">Observation</th>
+                      <th class="bg-dark text-white">Assessment</th>
+                      <th class="bg-dark text-white">Plan</th>
+                      <th class="bg-dark text-white">Remark</th>
+<!--                      <th>Creator</th>-->
+                      <th class="bg-dark text-white">Create Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for doctorNote in doctorNote %}
+                        <tr>
+                          <td> {{ doctorNote.appointmentID.patientID.surname}} {{ doctorNote.appointmentID.patientID.firstname}} {{ doctorNote.appointmentID.patientID.othername}}</td>
+                          <td>{{ doctorNote.appointmentID.patientID.hopitalNo}}</td>
+                          <td>{{ doctorNote.appointmentID.AppointmentTypeID}}</td>
+                          <td>{{ doctorNote.status}}</td>
+                          <td>{{ doctorNote.observation }}</td>
+                          <td>{{ doctorNote.assessment}}</td>
+                          <td>{{ doctorNote.plan}}</td>
+                          <td>{{ doctorNote.remark}}</td>
+<!--                          <td>{{ doctorNote.creator}}</td>-->
+                          <td>{{ doctorNote.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-secondary" href="{% url 'CHMS-doctorNoteUpdate' doctorNote.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-info" href="{% url 'CHMS-doctorNoteDetail' doctorNote.id %}"><i class="fa fa-lg fa-info-circle"></i></a><a class="btn btn-danger" href="{% url 'CHMS-doctorNoteDelete' doctorNote.id %}"><i class="fa fa-lg fa-trash"></i></a><a class="btn btn-primary" href="{% url 'CHMS-labTestCreate' doctorNote.id %}">Lab</a><a class="btn btn-secondary" href="{% url 'CHMS-prescriptionCreate' doctorNote.id %}">Pharmacy</a></div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

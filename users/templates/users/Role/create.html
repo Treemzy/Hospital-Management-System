@@ -1,0 +1,52 @@
+{% extends "CHospital/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+   <div class="app-title">
+
+       <div>
+              <h1><i class="fa fa-edit"></i> Create Role</h1>
+              <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+            </div>
+            <ul class="app-breadcrumb breadcrumb">
+              <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+              <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Records</a></li>
+            </ul>
+       </div>
+      <div class="tile">
+       <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-gender'%}"><i class="fa fa-lg fa-arrow-left"></i>Back</a></div>
+         <div class="page-header">
+          <div class="row">
+            <div class="col-lg-12">
+                {% if h2 %}
+                    <h2 class="mb-3 line-head" >{{ h2 }} Role</h2>
+                {% else %}
+                    <h2 class="mb-3 line-head">Create Role</h2>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+          <form class="login-form" method="POST" action="">
+             {% csrf_token %}
+            <div class="row">
+                 <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Name: </label>
+                         {{ form.role|as_crispy_field }}
+                      </div>
+                 </div>
+            </div>
+
+
+             <div class="form-group">
+                 {% if request.user.is_authenticated %}
+                <input type="hidden" name="creator" value="{{ request.user.email }}" />
+                  {% endif %}
+                <input type="hidden" name="createDate" value="{% now 'Y-m-d H:i:s' %}" />
+            </div>
+
+             <div class="form-group btn-container">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-check-circle fa-lg fa-fw"></i>CREATE</button>
+             </div>
+          </form>
+   </div>
+{%endblock content%}

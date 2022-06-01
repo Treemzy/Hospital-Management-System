@@ -1,0 +1,23 @@
+{% extends "CHospital/errorbase.html" %}
+   {% block content %}
+
+      <div class="page-error">
+        <h1><i class="fa fa-exclamation-circle"></i> ERROR 403: Access Denied</h1>
+        <div class="bs-component">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                  <blockquote class="card-blockquote">
+                      <h4>You do not have the USER access to this Page: Please contact the admin to grant you access</h4>
+                  </blockquote>
+                    <p class="text-center"><a class="btn btn-danger mt-20" href="javascript:window.history.back();">Go Back</a></p>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+
+
+
+
+{%endblock content%}

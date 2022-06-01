@@ -1,0 +1,37 @@
+{% load static  %}
+<html>
+    <head>
+         <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- main CSS -->
+        <link rel="stylesheet"  href="{% static 'style/main.css' %}">
+        <!-- Font-icon css-->
+        <link rel="stylesheet"  href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+        <link rel="stylesheet"  href="{% static 'fonts/font.css' %}">
+
+        {% if title %}
+            <title>CHMS - {{ title }}</title>
+        {% else %}
+            <title>CHMS</title>
+        {% endif %}
+    </head>
+<body>
+    <section class="material-half-bg">
+      <div class="cover"></div>
+    </section>
+    <section class="login-content">
+      <div class="logo">
+        <h1>Uni-Abuja - <span class="hms">HMS</span></h1>
+      </div>
+      <div class="login-box">
+          {% block content %}{% endblock %}
+      </div>
+    </section>
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}" ></script>
+  <script src="{% static 'js/popper.min.js' %}" ></script>
+  <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+  <script src="{% static 'js/main.js' %}" ></script>
+</body>
+</html>

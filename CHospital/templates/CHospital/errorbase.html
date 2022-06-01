@@ -1,0 +1,27 @@
+{% load static  %}
+<html>
+    <head>
+         <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- main CSS -->
+        <link rel="stylesheet"  href="{% static 'style/main.css' %}">
+        <!-- Font-icon css-->
+        <link rel="stylesheet"  href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+        <link rel="stylesheet"  href="{% static 'fonts/font.css' %}">
+
+        {% if title %}
+            <title>CHMS - {{ title }}</title>
+        {% else %}
+            <title>CHMS</title>
+        {% endif %}
+    </head>
+<body>
+    {% block content %}{% endblock %}
+ <script src="{% static 'js/jquery-3.3.1.min.js' %}" ></script>
+  <script src="{% static 'js/popper.min.js' %}" ></script>
+  <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+  <script src="{% static 'js/main.js' %}" ></script>
+</body>
+</html>

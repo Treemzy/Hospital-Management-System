@@ -1,0 +1,474 @@
+{% load static  %}
+<html lang="en">
+<head>
+<title>UNI-ABUJA CHMS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+<!-- Font-icon css-->
+<link rel="stylesheet"  href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+<link rel="stylesheet"  href="{% static 'fonts/font.css' %}">
+<link rel="stylesheet" href="{% static 'css/+animate.css+owl.carousel.min.css+owl.theme.defa.css' %}" />
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	<div class="container">
+		<a class="navbar-brand" href="index-2.html">UNI-ABUJA <span style="color:#007d71;">CHMS</span></a>
+		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="oi oi-menu"></span> Menu
+		</button>
+		<div class="collapse navbar-collapse" id="ftco-nav">
+			<ul class="navbar-nav nav ml-auto">
+				<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+				<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+				<li class="nav-item"><a href="#practice-section" class="nav-link"><span>Features</span></a></li>
+				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+				<li class="nav-item cta"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+				<li class="nav-item ">
+					<div class="btn-group btn-container" style="margin-top:17px; margin-left:13px;">
+						 <a class="btn btn-primary" href="javascript:window.history.back();">
+							 <i class="fa fa-arrow-right"></i>
+						 </a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<section class="hero-wrap" style="background-image:url(../media/images/7.jpg)" data-section="home">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
+			<div class="col-md-6 ftco-animate" style="margin-top:170px !important;" data-scrollax=" properties: { translateY: '70%' }">
+				<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">University Of Abuja Hospital Management Sysytem</h1>
+				<p class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Documentations and activities Optimization in Hospitals.</p>
+				<p><a href="{% url 'register' %}" class="btn btn-primary py-3 px-4">Register</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-counter ftco-no-pt ftco-no-pb img" id="section-counter">
+	<div class="container">
+		<div class="row d-md-flex align-items-center justify-content-end">
+			<div class="col-lg-12">
+				<div class="ftco-counter-wrap">
+					<div class="row no-gutters d-md-flex align-items-center align-items-stretch">
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18">
+								<div class="text">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="fa fa-users"></span>
+									</div>
+									<strong class="number">{{patient.count}}</strong>
+									<span>Patients</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18">
+								<div class="text">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="flaticon-handshake"></span>
+									</div>
+									<strong class="number">{{todayApp.count}}</strong>
+									<span>Today's Appointments</span>
+									<span> {{current_datetime}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18">
+								<div class="text">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="flaticon-lawyer"></span>
+									</div>
+									<strong class="number">{{u.count}}</strong>
+									<span>Users</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18">
+								<div class="text">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="fa fa-user-md "></span>
+									</div>
+									<strong class="number">{{doctor.count}}</strong>
+									<span>Doctors</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-about ftco-no-pt ftco-no-pb img ftco-section bg-light" id="about-section">
+	<div class="container">
+		<div class="row d-flex">
+			<div class="col-md-6 col-lg-6 d-flex order-md-last">
+				<div class="img-about img d-flex align-items-stretch">
+					<div class="img d-flex align-self-stretch align-items-end" style="background-image:url(../media/images/3.png)">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6 pr-lg-5 py-3 py-lg-5">
+				<div class="row justify-content-start py-3 py-lg-5">
+					<div class="col-md-12 heading-section ftco-animate">
+						<span class="subheading">Welcome</span>
+						<h2 class="mb-4" style="font-size: 44px; text-transform: capitalize;">Welcome to University of Abuja Hospital Management System</h2>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-about ftco-no-pt ftco-no-pb img ftco-section bg-light">
+	<div class="container">
+		<div class="row d-flex">
+			<div class="col-md-6 col-lg-6 d-flex">
+				<div class="img-about img d-flex align-items-stretch">
+					<div class="img d-flex align-self-stretch align-items-end" style="background-image:url(../media/images/5.png">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-6 pl-lg-5 py-5">
+				<div class="row justify-content-start pb-3">
+					<div class="col-md-12 heading-section ftco-animate pb-5">
+						<span class="subheading">Highlights</span>
+						<h2 class="mb-4" style="font-size: 44px; text-transform: capitalize;">Some Features</h2>
+					</div>
+					<div class="col-md-12 testimony-section">
+						<div class="owl-carousel carousel-testimony">
+							<div class="item">
+								<div class="testimony-wrap">
+									<div class="text mb-5">
+										<h3>Patients Record</h3>
+										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap">
+									<div class="text mb-5">
+										<h3>Appiontments Records</h3>
+										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="testimony-wrap">
+									<div class="text mb-5">
+										<h3>Lab Test / Lab Results</h3>
+										<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-no-pb ftco-services" id="practice-section">
+	<div class="container">
+		<div class="row justify-content-center pb-5">
+		<div class="col-md-10 heading-section text-center ftco-animate">
+		<span class="subheading">Features</span>
+		<h2 class="mb-4">Features & Roles</h2>
+		<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+		</div>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-md-5 col-lg-3 ftco-animate py-4 nav-link-wrap">
+			<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+			<a class="nav-link px-4 py-1 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> Sign-Up & Sign-In </a>
+			<a class="nav-link px-4 py-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false"><span class="mr-3 flaticon-flasks"></span> Role Assignment</a>
+			<a class="nav-link px-4 py-1" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-analysis"></span> Patient's Record</a>
+			<a class="nav-link px-4 py-1" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-web-design"></span> Appiontments</a>
+			<a class="nav-link px-4 py-1" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false"><span class="mr-3 flaticon-innovation"></span> Doctor's Note</a>
+			<a class="nav-link px-4 py-1" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false"><span class="mr-3 flaticon-idea"></span> Laboratory Records</a>
+			<a class="nav-link px-4 py-1" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false"><span class="mr-3 flaticon-idea"></span> Pharmacy Records</a>
+			<a class="nav-link px-4 py-1" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false"><span class="mr-3 flaticon-idea"></span> Admin Area</a>
+			</div>
+			</div>
+			<div class="col-md-7 col-lg-9 ftco-animate p-4 p-md-5 d-flex align-items-center">
+				<div class="tab-content pl-lg-4" id="v-pills-tabContent">
+					<div class="tab-pane fade show active py-0 py-lg-5" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-lock"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Sign-Up & Sign-In</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+								<p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa flaticon-shield"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Assiging Of Roles To Users</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+								<p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-file"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Patient Reocrds</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+								<p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-calendar"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Booking Appiontments</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+								<p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-edit"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Doctor' Assements Records</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+								<p><a href="#" class="btn btn-primary px-4 py-3">Learn More</a></p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-flask"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Laboratory Test Request and Results</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block flaticon-medicine"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Drug Prescriptions & Pharmacy Reports</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block fa fa-dashboard"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Admin Area</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block flaticon-handcuffs"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Sexual Offenses</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade py-0 py-lg-5" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">
+						<div class="d-lg-flex">
+							<div class="icon-law mr-md-4 mr-lg-5">
+								<span class="icon mb-3 d-block flaticon-house"></span>
+							</div>
+							<div class="text">
+								<h2 class="mb-4">Property Law</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+								<p>Inventore fugit error iure nisi reiciendis fugiat illo pariatur quam sequi quod iusto facilis officiis nobis sit quis molestias asperiores rem, blanditiis! Commodi exercitationem vitae deserunt qui nihil ea, tempore et quam natus quaerat doloremque.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="ftco-section contact-section ftco-no-pb bg-light" id="contact-section">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-10 heading-section text-center ftco-animate">
+				<span class="subheading">Contact</span>
+				<h2 class="mb-4">Contact Us</h2>
+				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+			</div>
+		</div>
+		<div class="row d-flex contact-info mb-5">
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="fa fa-map-marker"></span>
+					</div>
+					<h3 class="mb-4">Address</h3>
+					<p>Main Campus KM 23 Airport -Giri Road Abuja, FCT, Nigeria ·</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="fa fa-phone"></span>
+					</div>
+					<h3 class="mb-4">Contact Number</h3>
+					<p><a href="tel://1234567920">+2348079795689</a></p>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+				<div class="icon d-flex align-items-center justify-content-center">
+					<span class="fa fa-envelope"></span>
+				</div>
+				<h3 class="mb-4">Email Address</h3>
+				<p><a href=""><span >CHMS@info.com.ng</span></a></p>
+			</div>
+			</div>
+			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+				<div class="align-self-stretch box p-4 text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="fa fa-globe"></span>
+					</div>
+					<h3 class="mb-4">Website</h3>
+					<p><a href="#">Uni Abuja Official Website</a></p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+<footer class="ftco-footer ftco-section">
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-md">
+			<div class="ftco-footer-widget mb-4">
+			<h2 class="ftco-heading-2">About UNI-ABUJA <span>CHMS</span></h2>
+			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			</div>
+			</div>
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4 ml-md-4">
+					<h2 class="ftco-heading-2">Links</h2>
+					<ul class="list-unstyled">
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Home</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>About</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Features</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+					<h2 class="ftco-heading-2">Application Features</h2>
+					<ul class="list-unstyled">
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Sign-Up & Sign-In</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Role Assignment</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Patient's Record</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Appiontments</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Doctor's Note</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Laboratory Records</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Pharmacy Records</a></li>
+						<li><a href="#"><span class="fa fa-arrow-right mr-2"></span>Admin Area</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+					<h2 class="ftco-heading-2">Have a Questions?</h2>
+					<div class="block-23 mb-0">
+						<ul>
+							<li><span class="fa fa-map-marker"></span> <span class="text"> Main Campus KM 23 Airport -Giri Road Abuja, FCT, Nigeria ·</span></li>
+							<li><a href="#"><span class="fa fa-phone"></span><span class="text">+2348079795689</span></a></li>
+							<li><a href="#"><span class="fa fa-envelope"></span><span class="text"><span>CHMS@info.com.ng</span></span></a></li>
+						</ul>
+					</div>
+					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
+						<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+						<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<p>
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script src="{% static 'jss/jquery.min.js' %}"></script>
+<script src="{% static 'jss/jquery-migrate-3.0.1.min.js%2bpopper.min.js%2bbootstrap.min.js.pagespeed.jc.TuuQVirIpE.js' %}"></script><script>eval(mod_pagespeed_yJ$J2On9k7);</script>
+<script>eval(mod_pagespeed_LmH7zMdjxp);</script>
+<script src="{% static 'jss/jquery.easing.1.3.js%2bjquery.waypoints.min.js%2bjquery.stellar.min.js%2bowl.carousel.min.js.pagespeed.jc.FgDmKvh0jp.js' %}"></script><script>eval(mod_pagespeed_3w$oCUlAWk);</script>
+<script>eval(mod_pagespeed_vQjSukLMhE);</script>
+<script>eval(mod_pagespeed_NykyLQ5Lv1);</script>
+<script>eval(mod_pagespeed_TG44LlFHUD);</script>
+<script src="{% static 'jss/jquery.magnific-popup.min.js%2baos.js%2bjquery.animateNumber.min.js%2bbootstrap-datepicker.js.pagespeed.jc.xX60wlFkPS.js' %}"></script><script>eval(mod_pagespeed_pNE7MKD8LU);</script>
+<script>eval(mod_pagespeed_Fttk0FOEoa);</script>
+<script>eval(mod_pagespeed_l29ytpDBK6);</script>
+<script>eval(mod_pagespeed_EPgup9ye1E);</script>
+<script src="{% static 'jss/jquery.timepicker.min.js%2bscrollax.min.js%2bgoogle-map.js%2bmain.js.pagespeed.jc.rShQDobnTf.js' %}"></script><script>eval(mod_pagespeed_nwS3eGRabR);</script>
+<script>eval(mod_pagespeed_eaYpb$RG8S);</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false"></script>
+<script>eval(mod_pagespeed_N5qVnV0RVt);</script>
+<script>eval(mod_pagespeed_3sGiaGpT2f);</script>
+
+
+</body>
+
+</html>

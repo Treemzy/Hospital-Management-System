@@ -1,0 +1,59 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Appointments</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-appointment' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Patient Name</th>
+                      <th>Hospital Number</th>
+                      <th>Appointment Type</th>
+                      <th>Doctor</th>
+                      <th>Scheduled Date</th>
+                      <th>Create Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for appointment in appointment %}
+                        <tr>
+                          <td>{{ appointment.patientID.surname}} {{ appointment.patientID.firstname}} {{ appointment.patientID.othername}}</td>
+                          <td>{{ appointment.patientID.hopitalNo}}</td>
+                          <td>{{ appointment.AppointmentTypeID}}</td>
+                          <td>{{ appointment.doctor}}</td>
+                          <td>{{ appointment.scheduledDate|date:"F d, Y"}}</td>
+                          <td>{{ appointment.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group">
+                                  {% if request.user.roles.role == 'Records' or request.user.is_superuser  %}
+                                  <a class="btn btn-secondary" href="{% url 'CHMS-appointmentUpdate' appointment.id %}"><i class="fa fa-lg fa-edit"></i></a>
+                                  <a class="btn btn-danger" href="{% url 'CHMS-appointmentDelete' appointment.id %}"><i class="fa fa-lg fa-trash"></i></a>
+                                  {% endif %}
+                                  <a class="btn btn-info" href="{% url 'CHMS-appointmentDetail' appointment.id %}"><i class="fa fa-lg fa-info-circle"></i></a>
+
+                              </div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

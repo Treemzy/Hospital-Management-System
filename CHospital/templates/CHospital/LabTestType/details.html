@@ -1,0 +1,53 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+  <div class="app-title">
+      <div>
+          <h1><i class="fa fa-info-circle"></i> {{ object.name}}'s Lab Test Type</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-LabTestType' %}">Records</a></li>
+        </ul>
+   </div>
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-title-w-btn">
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-LabTestType' %}"><i class="fa fa-lg fa-home"></i></a><a class="btn btn-primary" href="javascript:window.history.back();"><i class="fa fa-lg fa-arrow-left"></i></a></div>
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-LabTestTypeUpdate' object.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-danger" href="{% url 'CHMS-LabTestTypeDelete' object.id %}"><i class="fa fa-lg fa-trash"></i></a></div>
+        </div>
+           <div class="card mb-3 text-white bg-dark">
+            <div class="card-body">
+                <div class="tile-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Lab Test Type Name:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.name}}</h4>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Creator:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.creator }}</h4>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <h5>Created On:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.createDate|date:"F d, Y" }}</h4>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock content %}

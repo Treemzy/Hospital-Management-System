@@ -1,0 +1,149 @@
+{% load static  %}
+<html>
+    <head>
+         <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- main CSS -->
+        <link rel="stylesheet"  href="{% static 'style/main.css' %}">
+        <!-- Font-icon css-->
+        <link rel="stylesheet"  href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+        <link rel="stylesheet"  href="{% static 'fonts/font.css' %}">
+
+        {% if title %}
+            <title>CHMS - {{ title }}</title>
+        {% else %}
+            <title>CHMS</title>
+        {% endif %}
+    </head>
+<body class="app sidebar-mini">
+    <!-- Navbar-->
+    <header class="app-header"><a class="app-header__logo" href="{% url 'CHMS-home'%}">Uni-Abuja - <span class="hms">HMS</span></a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+
+      <ul class="app-nav">
+        <a class="app-nav__item" href="{% url 'Index'%}" ><i class="fa fa-globe fa-lg"></i></a>
+        <!-- User Menu-->
+        <li class="dropdown">
+         <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" href="{% url 'profile'%}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'LogOut'%}"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <img class="app-sidebar__user-avatar" src="{{ user.profile.image.url }}" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">
+              {% if request.user.is_authenticated %}
+                {{ request.user.username }}
+              {% endif %}
+          </p>
+          <p class="app-sidebar__user-designation">{{ request.user.roles}}</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item {{act}}"  href="{% url 'CHMS-home'%}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        {% if request.user.roles.role == 'Records' or request.user.is_superuser  %}
+        <li><a class="app-menu__item {{set}}" href="{% url 'CHMS-records' %}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Patients Records</span></a></li>
+        {% endif %}
+        {% if request.user.is_superadmin or request.user.is_superuser  %}
+        <li class="treeview"><a class="app-menu__item {{yes}} {{LTT}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-gears"></i><span class="app-menu__label">Settings</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{% url 'CHMS-gender' %}"><i class="icon fa fa-circle-o"></i> Gender </a></li>
+            <li><a class="treeview-item" href="{% url 'CHMS-marital' %}"><i class="icon fa fa-circle-o"></i> Marital Status </a></li>
+            <li><a class="treeview-item" href="{% url 'CHMS-patienttype' %}"><i class="icon fa fa-circle-o"></i> Patient Type </a></li>
+            <li><a class="treeview-item" href="{% url 'CHMS-bloodgroup' %}"><i class="icon fa fa-circle-o"></i> Blood Group </a></li>
+            <li><a class="treeview-item {{LTT}}" href="{% url 'CHMS-LabTestType' %}"><i class="icon fa fa-circle-o"></i> Lab Test Type </a></li>
+            <li><a class="treeview-item" href="{% url 'CHMS-genotype' %}"><i class="icon fa fa-circle-o"></i> Genotype </a></li>
+            <li><a class="treeview-item {{Ok}}" href="{% url 'CHMS-appointmentType' %}"><i class="icon fa fa-circle-o"></i> Appointment Type </a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+         <li class="treeview"><a class="app-menu__item {{Okk}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Appointment</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            {% if request.user.roles.role == 'Records' %}
+            <li><a class="treeview-item {{Okk}}" href="{% url 'CHMS-appointment' %}"><i class="icon fa fa-circle-o"></i>Created By You</a></li>
+            {% endif %}
+            <li><a class="treeview-item {{adp}}" href="{% url 'CHMS-Adappointment' %}"><i class="icon fa fa-circle-o"></i>General</a></li>
+          </ul>
+        </li>
+
+        {% if request.user.roles.role == 'Doctor' or request.user.is_superuser  %}
+            <li class="treeview"><a class="app-menu__item {{DN}} {{LT}} {{LR}}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Doctor's Section</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item {{DN}}" href="{% url 'CHMS-doctorNote' %}"><i class="icon fa fa-circle-o"></i> Doctor's Note</a></li>
+                <li><a class="treeview-item {{LT}}" href="{% url 'CHMS-labTest' %}"><i class="icon fa fa-circle-o"></i> Lab Test Request</a></li>
+                <li><a class="treeview-item {{LR}}" href="{% url 'CHMS-DlabResult' %}"><i class="icon fa fa-circle-o"></i> Lab Test Result</a></li>
+                <li><a class="treeview-item {{PT}}" href="{% url 'CHMS-prescription' %}"><i class="icon fa fa-circle-o"></i> Prescription</a></li>
+                <li><a class="treeview-item {{PH}}" href="{% url 'CHMS-Dpharmacy' %}"><i class="icon fa fa-circle-o"></i> Pharmacy</a></li>
+              </ul>
+            </li>
+       {% endif %}
+
+       {% if request.user.roles.role == 'Pharmacy' or request.user.is_superuser  %}
+            <li class="treeview"><a class="app-menu__item {{DN}} {{LT}} {{LR}}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Pharmacist's Section</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item {{DN}}" href="{% url 'CHMS-ADprescription' %}"><i class="icon fa fa-circle-o"></i> Prescription</a></li>
+                <li><a class="treeview-item {{LT}}" href="{% url 'CHMS-pharmacy' %}"><i class="icon fa fa-circle-o"></i> Pharmacist's Report</a></li>
+              </ul>
+            </li>
+          <li class="treeview"><a class="app-menu__item {{DR}} {{DRR}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Drugs Section</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item {{DR}}" href="{% url 'CHMS-drugs' %}"><i class="icon fa fa-circle-o"></i> Drugs</a></li>
+                <li><a class="treeview-item {{DRR}}" href="{% url 'CHMS-drugsRecords' %}"><i class="icon fa fa-circle-o"></i> Drugs Record</a></li>
+              </ul>
+            </li>
+            <li class="treeview"><a class="app-menu__item {{DSP}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Drugs Dispense</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item {{DSP}}" href="{% url 'CHMS-dispense' %}"><i class="icon fa fa-circle-o"></i> Drugs Dispense</a></li>
+              </ul>
+            </li>
+       {% endif %}
+
+       {% if request.user.roles.role == 'Lab' or request.user.is_superuser  %}
+            <li class="treeview"><a class="app-menu__item {{DN}} {{LT}} {{LR}}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Laboratory's Section</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a class="treeview-item {{DN}}" href="{% url 'CHMS-ADlabTest' %}"><i class="icon fa fa-circle-o"></i> Test Request</a></li>
+                <li><a class="treeview-item {{LT}}" href="{% url 'CHMS-labResult' %}"><i class="icon fa fa-circle-o"></i> Test Result & Report</a></li>
+              </ul>
+            </li>
+       {% endif %}
+
+        {% if request.user.is_superadmin or request.user.is_superuser  %}
+         <li class="treeview"><a class="app-menu__item {{allUsers}} {{Role}}}}" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-o"></i><span class="app-menu__label">Users</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item {{Role}}" href="{% url 'CHMS-Role' %}"><i class="icon fa fa-circle-o"></i> Roles</a></li>
+            <li><a class="treeview-item {{allUsers}}" href="{% url 'CHMS-AllUsers' %}"><i class="icon fa fa-circle-o"></i> Assign User Role</a></li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </aside>
+    <main class="app-content">
+
+        {% block content %}{% endblock %}
+    </main>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}" ></script>
+  <script src="{% static 'js/popper.min.js' %}" ></script>
+  <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+  <script src="{% static 'js/main.js' %}" ></script>
+  <script src="{% static 'js/lga.js' %}" ></script>
+  <script src="{% static 'js/plugins/pace.min.js' %}" ></script>
+  <script type="text/javascript" src="{% static 'js/plugins/chart.js' %}" ></script>
+<!-- Data table plugin-->
+  <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}" ></script>
+  <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}" ></script>
+  <script type="text/javascript">$('#sampleTable').DataTable();</script>
+
+</body>
+</html>

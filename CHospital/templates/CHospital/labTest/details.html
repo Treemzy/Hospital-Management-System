@@ -1,0 +1,85 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+  <div class="app-title">
+        <div>
+          <h1><i class="fa fa-info-circle"></i> {{ object.DoctorNoteID.appointmentID.patientID.surname}}'s Lab Test Request</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Records</a></li>
+        </ul>
+   </div>
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-title-w-btn">
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-labTest'%}"><i class="fa fa-lg fa-arrow-left"></i>Back</a></div>
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-labTestUpdate' labTest.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div>
+        </div>
+        <div class="card mb-3 text-white bg-dark">
+            <div class="card-body">
+                <div class="tile-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Patient Name:</h5>
+                        </div>
+                        <div class="col-md-6">
+                        <h4>{{ object.DoctorNoteID.appointmentID.patientID.surname}} {{ object.DoctorNoteID.appointmentID.patientID.firstname}} {{ object.DoctorNoteID.appointmentID.patientID.othername}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Hospital Number:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.DoctorNoteID.appointmentID.patientID.hopitalNo}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Test Type:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.TestType}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Title:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.title }}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Status:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.DoctorNoteID.status }}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Creator:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.creator }}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Create Date:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.createDate|date:"F d, Y" }}</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Lab Test Request </h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-labTest' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Patient Name</th>
+                      <th>Hospital Number</th>
+                      <th>Test Type</th>
+                      <th>Title</th>
+                      <th>Remark</th>
+                      <th>Status</th>
+                      <th>Create Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for labTest in labTest %}
+                        <tr>
+                          <td>{{ labTest.DoctorNoteID.appointmentID.patientID.surname}} {{ labTest.DoctorNoteID.appointmentID.patientID.firstname}} {{ labTest.DoctorNoteID.appointmentID.patientID.othername}}</td>
+                          <td>{{ labTest.DoctorNoteID.appointmentID.patientID.hopitalNo}}</td>
+                          <td>{{ labTest.TestType}}</td>
+                          <td>{{ labTest.title}}</td>
+                          <td>{{ labTest.remark}}</td>
+                          <td>{{ labTest.DoctorNoteID.status}}</td>
+                          <td>{{ labTest.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-secondary" href="{% url 'CHMS-labTestUpdate' labTest.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-info" href="{% url 'CHMS-ADlabTestDetail' labTest.id %}"><i class="fa fa-lg fa-info-circle"></i></a></div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

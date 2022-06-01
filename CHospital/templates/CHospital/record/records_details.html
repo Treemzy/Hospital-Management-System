@@ -1,0 +1,170 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-users"></i> {{ object.surname }}'s Record</h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-records' %}">Records</a></li>
+        </ul>
+   </div>
+<div class="col-md-12">
+      <div class="tile">
+        <div class="tile-title-w-btn">
+          <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-records'  %}"><i class="fa fa-lg fa-home"></i></a><a class="btn btn-primary" href="javascript:window.history.back();"><i class="fa fa-lg fa-arrow-left"></i></a></div>
+		  <div class="btn-group"><a class="btn btn-primary" href="{% url 'CHMS-appointmentCreate' patient.id %}"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-primary" href="{% url 'CHMS-update' patient.id %}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{% url 'CHMS-delete' patient.id %}"><i class="fa fa-lg fa-trash"></i></a></div>
+		</div>
+           <div class="card mb-3 text-white bg-dark">
+
+            <div class="card-body">
+                <h3 class="title text-center">{{ object.surname }} {{ object.firstname }} {{ object.othername }}</h3><hr/>
+                <div class="tile-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Hospital No.:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.hopitalNo}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Surname:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.surname}}</h4>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                            <h5>Firstname:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.firstname}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Othername:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.othername}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Date of Birth :</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.dob|date:"F d, Y"}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Gender:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.gender}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Phone Number:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.phone}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Email Address :</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.emailAd}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>State:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.state}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Local Government Area:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.lga}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Matric / Staff NO ::</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.matric_staff}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Address:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.address}}</h4>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <h5>Marital Status:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.maritalStatus}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Patient Type:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.patientType}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Blood Group:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.bloodGroup}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Genotype:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.genotype}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Medical Condition:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ object.medicalCondition}}</h4>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock content %}

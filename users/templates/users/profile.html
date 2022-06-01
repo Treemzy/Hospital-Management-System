@@ -1,0 +1,108 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+  <div class="row user">
+        <div class="col-md-12">
+          <div class="profile">
+            <div class="info">
+              <img class="user-img" src="{{ user.profile.image.url }}">
+              <h4>{{ request.user.first_name }} {{ request.user.last_name }} ({{ request.user.username }})</h4>
+              <p>{{ request.user.roles}}</p>
+            </div>
+            <div class="cover-image"></div>
+          </div>
+        </div>
+       {% if messages %}
+            {% for message in messages %}
+                <div class="col-lg-12 mt-4">
+                    <div class="bs-component">
+                      <div class="alert alert-dismissible {{message.tags}}">
+                        <button class="close" type="button" data-dismiss="alert">×</button>
+                          <strong>{{ message }}</strong>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+<!--      {% if request.user.is_superadmin %}-->
+<!--      <h1>io</h1>-->
+<!--       <p>{{ request.user.roles}}</p>-->
+<!--        &lt;!&ndash; Only superusers can view things in here &ndash;&gt;-->
+<!--        {% endif %}-->
+     <div class="col-md-6 tab-content">
+          <div class="tile">
+            <div class="tile-title-w-btn">
+			  <h4 class="title line-head">Profile Info</h4>
+            </div>
+            <div class="tile-body">
+					<h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+                    <h3 class="text-muted"><small>Role</small> {{ request.user.roles}}</h3>
+                    <h2 class="text-muted">
+                        <small>
+                             Status:
+                             {% if request.user.profile.active == True %}
+                            <span class="badge badge-pill badge-primary">Active</span>
+                              {% else %}
+                            <span class="badge badge-pill badge-danger">Not Active</span>
+                              {% endif %}
+                        </small>
+                    </h2>
+                    <h4>Username : {{ request.user.username }}</h4>
+                    <h4>Email : {{ request.user.email }}</h4>
+                    <h4>Role : {{ request.user.email }}</h4>
+                    <h4>Bio :  {{ request.user.profile.bio }}</h4>
+                   <div class="bs-component" style="margin-bottom: 40px;">
+                        {% if request.user.is_superadmin %}
+                        <h5><span class="badge badge-pill badge-dark">Super-Admin</span></h5>
+                        {% endif %}
+                        {% if request.user.is_admin %}
+                        <h5><span class="badge badge-pill badge-dark">Admin</span></h5>
+                        {% endif %}
+
+
+                   </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 tab-content">
+            <div class="timeline-post">
+                <h4 class="line-head">Update Profile</h4>
+                <form method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label class="control-label">Username</label>
+                        {{ u_form.username }}
+                     </div>
+                    <div class="form-group">
+                      <label class="control-label">First Name</label>
+                        {{ u_form.first_name }}
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Last Name</label>
+                        {{ u_form.last_name }}
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Email</label>
+                        {{ u_form.email }}
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Bio</label>
+                       {{ p_form.bio }}
+                    </div>
+                    <div class="form-group">
+                       {{ p_form.active }} <label class="control-label">Active</label>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label">Image</label>
+                      {{ p_form.image }}
+                    </div>
+                    <div class="tile-footer">
+                      <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Submit</button>
+                    </div>
+
+              </form>
+            </div>
+        </div>
+  </div>
+
+{%endblock content%}

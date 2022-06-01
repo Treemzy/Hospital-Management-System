@@ -1,0 +1,74 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Lab Test Result </h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-labResult' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Patient Name</th>
+                      <th>Hospital Number</th>
+                      <th>Test Type</th>
+                      <th>Title</th>
+                      <th>Doctor's Remark</th>
+
+                      <th class="bg-dark text-white">Result</th>
+                      <th class="bg-dark text-white">Remark</th>
+                      <th class="bg-dark text-white">Result File</th>
+                      <th class="bg-dark text-white">Status</th>
+                      <th class="bg-dark text-white">Creator</th>
+                      <th>Create Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for labResult in labResult %}
+                        <tr>
+                          <td>{{ labResult.test.DoctorNoteID.appointmentID.patientID.surname}} {{ labResult.test.DoctorNoteID.appointmentID.patientID.firstname}} {{ labResult.test.DoctorNoteID.appointmentID.patientID.othername}}</td>
+                          <td>{{ labResult.test.DoctorNoteID.appointmentID.patientID.hopitalNo}}</td>
+                          <td>{{ labResult.test.TestType}}</td>
+                          <td>{{ labResult.test.title}}</td>
+                          <td>{{ labResult.test.remark}}</td>
+                            {% if not labResult.result %}
+                            <td>Pending!</td>
+                            {% else %}
+                          <td>{{ labResult.result}}</td>
+                            {% endif %}
+                          <td>{{ labResult.remark}}</td>
+                          <td>
+                              {% if not labResult.file %}
+                              No File Uploaded
+                              {% else %}
+                              <a href="" onclick="window.open('/media/{{ labResult.file }}')"><i class="fa fa-file-pdf-o"></i></a>
+                              {% endif %}
+                          </td>
+
+                          <td>{{ labResult.status}}</td>
+                          <td>{{ labResult.creator}}</td>
+                          <td>{{ labResult.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-info" href="{% url 'CHMS-labResultDetail' labResult.id %}"><i class="fa fa-lg fa-info-circle"></i></a></div>
+                          </td>
+
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}

@@ -1,0 +1,61 @@
+{% extends "CHospital/base.html" %}
+{% block content %}
+   <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Pharmacy </h1>
+          <p>Welcome to Uni-Abuja Computerised Hospital Management System </p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="{% url 'CHMS-pharmacy' %}">Admin</a></li>
+        </ul>
+   </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Patient Name</th>
+                      <th>Hospital Number</th>
+                      <th>Result File</th>
+                      <th>Report</th>
+                      <th>Remark</th>
+                      <th>Status</th>
+                      <th>Creator</th>
+                      <th>Create Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pharmacy in pharmacy %}
+                        <tr>
+                          <td>{{ pharmacy.prescription.DoctorNoteID.appointmentID.patientID.surname}} {{ pharmacy.prescription.DoctorNoteID.appointmentID.patientID.firstname}} {{ pharmacy.prescription.DoctorNoteID.appointmentID.patientID.othername}}</td>
+                          <td>{{ pharmacy.prescription.DoctorNoteID.appointmentID.patientID.hopitalNo}}</td>
+                          <td>
+                              {% if not pharmacy.prescription.file %}
+                              No File Uploaded
+                              {% else %}
+                              <a href="" onclick="window.open('/media/{{ pharmacy.prescription.file }}')"><i class="fa fa-file-pdf-o"></i></a>
+                              {% endif %}
+                          </td>
+                          <td>{{ pharmacy.complaint}}</td>
+                          <td>{{ pharmacy.remark}}</td>
+                          <td>{{ pharmacy.status}}</td>
+                          <td>{{ pharmacy.creator}}</td>
+                          <td>{{ pharmacy.createDate|date:"F d, Y"}}</td>
+                          <td>
+                              <div class="btn-group"><a class="btn btn-info" href="{% url 'CHMS-pharmacyDetail' pharmacy.id %}"><i class="fa fa-lg fa-info-circle"></i></a></div>
+                          </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock content%}
